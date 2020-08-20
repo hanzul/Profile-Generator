@@ -88,3 +88,97 @@ const questions = {
             validate: validateName
         },
     ],
+
+    // New profile 
+    newProfile: {
+        type: 'list',
+        name: 'newProfile',
+        message: 'Add another employee?',
+        choices: ['Engineer', 'Intern', "I am done."]
+    },
+
+     // Initializing the cards
+
+    managerCard: '',
+    engineerCards: '',
+    internCards: '',
+
+    askManager() {
+        return inquirer.prompt(this.managerQuestions)
+            .then(response => {
+                this.managerCard += (new Manager(response.name, response.employeeID, response.email, response.officeNumber)).makeCard()
+                return this.askNewProfile()
+            })
+    },
+    askEngineer() {
+        return inquirer.prompt(this.engineerQuestions)
+            .then(response => {
+                this.engineerCards += (new Engineer(response.name, response.employeeID, response.email, response.github)).makeCard();
+                return this.askNewProfile();
+            })
+    },
+    askIntern() {
+        return inquirer.prompt(this.internQuestions)
+            .then(response => {
+                this.internCards += (new Intern(response.name, response.employeeID, response.email, response.school)).makeCard();
+                return this.askNewProfile();
+            })
+    },
+    // After getting manager information, this function create a new profile for Engineer or Intern
+    askNewProfile() {
+        return inquirer.prompt(this.newProfile)
+            .then(response => {
+                if (response.newProfile === 'Engineer') {
+                    return this.askEngineer()
+                }
+                if (response.newProfile === 'Intern') {
+                    return this.askIntern()
+                }
+                return
+            })
+    }
+};
+
+// Validation functions for validateName, validateNumber, validateEmail
+function validateName(input) {
+    if (input) {
+        return true;
+    }
+    else {
+        console.log('\n\nPlease provide a name.\n');
+        return false;
+    }
+};
+function validateNumber(input) {
+    if (parseInt(input)) {
+        return true;
+    }
+    else {
+        console.log('\n\nPlease provide a number.\n');
+        return false;
+    }
+};
+function validateEmail(input) {
+    if (input.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        return true;
+    }
+    else { 
+        console.log('\n\nPlease provide a valid email address.\n');
+        return false;
+    }
+};
+
+
+//Main function init()
+function init() {
+
+    questions.askManager()
+        .then(() => {
+            //console.log('MANAGER CARD',questions.managerCard);
+            const page = generatePage(questions.managerCard, questions.engineerCards, questions.internCards)
+            fs.writeFile('./dist/index.html', page, err => (err) ? console.log(err) : console.log("good job"))
+        })
+}
+
+init()
+
