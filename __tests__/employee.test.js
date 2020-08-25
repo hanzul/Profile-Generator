@@ -1,7 +1,7 @@
 const Employee = require('../lib/Employee')
 
 test('creates an employee object', () => {
-    const employee = new Employee('Hani','1','Hani.guandique@gmail.com')
+    const employee = new Employee('Hani','1','Hani.ghaderi1@gmail.com')
 
     expect(employee.name).toBe('Hani')
     expect(employee.role).toBe('Employee')

@@ -2,7 +2,6 @@ const Manager = require('../lib/Manager')
 
 test('creates a manager object', () => {
     const manager = new Manager('Hani','1','Hani.ghaderi1@gmail.com','1')
-
     expect(manager.name).toBe('Hani')
     expect(manager.role).toBe('Manager')
     expect(manager.employeeID).toBe('1')
