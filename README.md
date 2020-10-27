@@ -23,13 +23,13 @@
 
 ## Questions? please contact me via email at <zulak1360@gmail.com> 
 
-## Video instructions and Demo --> [https://drive.google.com/file/d/1Es9FX21zMo58LMiZ8AG4R2B3HjGHKCmV/view]
+## [Video instructions and Demo](https://drive.google.com/file/d/1Es9FX21zMo58LMiZ8AG4R2B3HjGHKCmV/view)
 
-#The Screen shot of Application
+# The Screen shot of Application
 
 <img width="1272" alt="Screen Shot 2020-10-27 at 2 23 55 PM" src="https://user-images.githubusercontent.com/3277722/97364372-34b36b00-1861-11eb-9c18-0baeb06bc27f.png">
 
-#The Screen shot of test by JEST
+# The Screen shot of test by JEST
 
 <img width="950" alt="Screen Shot 2020-10-27 at 2 05 23 PM" src="https://user-images.githubusercontent.com/3277722/97364387-3c730f80-1861-11eb-9d0c-dff2ccf1954e.png">
 
